@@ -76,6 +76,10 @@ public:
     StatusBarView* getStatusBar() const { return statusBarView; }
 
     void setFileOrDirectory(QString f);
+    bool tryRestoreGeometry();
+
+protected:
+    void closeEvent(QCloseEvent* event) override;
 };
 
 }
