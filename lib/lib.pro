@@ -284,13 +284,12 @@ HEADERS += \
     src/mind/ai/autolinking/naive_autolinking_preprocessor.h \
     src/representations/markdown/markdown_transcoder.h \
     src/representations/representation_type.h \
-    src/definitions.h \
     src/representations/markdown/cmark_gfm_markdown_transcoder.h \
     src/mind/ai/autolinking/autolinking_mind.h \
     src/mind/limbo.h
 
 !mfnomd2html {
-    SOURCES += \
+    HEADERS += \
     src/mind/ai/autolinking/cmark_aho_corasick_block_autolinking_preprocessor.h
 }
 
