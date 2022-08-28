@@ -71,6 +71,10 @@ public:
     void setNote(Note* note) {
         noteEditDialog->setNote(note);
     }
+    void setSaveEnabled(bool enabled) {
+        rememberButton->setEnabled(enabled);
+        rememberAndLeaveButton->setEnabled(enabled);
+    }
 
 public slots:
     void handleShowNoteEditDialog();

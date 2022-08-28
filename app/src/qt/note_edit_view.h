@@ -61,6 +61,7 @@ public:
         // TODO configuration
         noteEditor->enableSpellCheck(true);
         noteEditor->setPlainText(QString::fromStdString(mdDescription));
+        bottomButtonsPanel->setSaveEnabled(false);
     }
     void setEditorShowLineNumbers(bool show) { noteEditor->setShowLineNumbers(show); }
     void setStatusBar(const StatusBarView* statusBar) { noteEditor->setStatusBar(statusBar); }
@@ -80,6 +81,7 @@ private slots:
     void slotSaveNote();
     void slotCloseEditor();
     void slotSaveAndCloseEditor();
+    void slotEditorTextChanged();
 
 signals:
     void signalSaveAndCloseEditor();

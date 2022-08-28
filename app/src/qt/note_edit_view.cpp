@@ -75,6 +75,12 @@ NoteEditView::NoteEditView(QWidget* parent)
     QObject::connect(
         noteEditor, SIGNAL(signalCloseEditorWithEsc()),
         this, SLOT(slotCloseEditor()));
+
+    // change tracking
+    QObject::connect(
+        noteEditor, SIGNAL(textChanged()),
+        this, SLOT(slotEditorTextChanged())
+    );
 }
 
 NoteEditView::~NoteEditView()
@@ -115,6 +121,11 @@ void NoteEditView::slotCloseEditor()
 void NoteEditView::slotSaveNote()
 {
     emit signalSaveNote();
+}
+
+void NoteEditView::slotEditorTextChanged()
+{
+    bottomButtonsPanel->setSaveEnabled(true);
 }
 
 } // m8r namespace
