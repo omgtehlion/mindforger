@@ -527,7 +527,10 @@ int main(int argc, char* argv[])
     mainWindowPresenter.showInitialView();
     mainWindowView.showMaximized();
 #else
-    mainWindowView.showMaximized();
+    if (mainWindowView.tryRestoreGeometry())
+        mainWindowView.setVisible(true);
+    else
+        mainWindowView.showMaximized();
     mindforgerApplication.font().setPointSize(config.getUiFontPointSize());
     mainWindowPresenter.showInitialView();
 #endif

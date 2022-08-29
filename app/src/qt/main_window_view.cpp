@@ -58,4 +58,32 @@ void MainWindowView::setFileOrDirectory(QString f)
     setWindowTitle(windowTitleSkeleton+" - "+f+" ");
 }
 
+bool MainWindowView::tryRestoreGeometry()
+{
+    // these are local per-machine settings, there is no reason to store them in the configuration
+    QSettings localSettings("mindforger", "mindforger");
+    auto geometry = localSettings.value("geometry");
+    if (geometry.isValid()) {
+        setMinimumSize(200, 200);
+        restoreGeometry(geometry.toByteArray());
+        return true;
+    } else {
+        return false;
+    }
+}
+
+void MainWindowView::preserveGeometry()
+{
+    if (!isFullScreen()) {
+        QSettings localSettings("mindforger", "mindforger");
+        localSettings.setValue("geometry", saveGeometry());
+    }
+}
+
+void MainWindowView::closeEvent(QCloseEvent* event)
+{
+    preserveGeometry();
+    QMainWindow::closeEvent(event);
+}
+
 } // m8r namespace
