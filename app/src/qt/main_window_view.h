@@ -77,6 +77,7 @@ public:
 
     void setFileOrDirectory(QString f);
     bool tryRestoreGeometry();
+    void preserveGeometry();
 
 protected:
     void closeEvent(QCloseEvent* event) override;

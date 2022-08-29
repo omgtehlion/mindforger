@@ -1229,8 +1229,10 @@ void MainWindowPresenter::doActionViewDistractionFree()
 void MainWindowPresenter::doActionViewFullscreen()
 {
     if(view.isFullScreen()) {
-        view.showMaximized();
+        if (!view.tryRestoreGeometry())
+            view.showMaximized();
     } else {
+        view.preserveGeometry();
         view.showFullScreen();
     }
 }

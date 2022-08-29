@@ -72,10 +72,17 @@ bool MainWindowView::tryRestoreGeometry()
     }
 }
 
+void MainWindowView::preserveGeometry()
+{
+    if (!isFullScreen()) {
+        QSettings localSettings("mindforger", "mindforger");
+        localSettings.setValue("geometry", saveGeometry());
+    }
+}
+
 void MainWindowView::closeEvent(QCloseEvent* event)
 {
-    QSettings localSettings("mindforger", "mindforger");
-    localSettings.setValue("geometry", saveGeometry());
+    preserveGeometry();
     QMainWindow::closeEvent(event);
 }
 
