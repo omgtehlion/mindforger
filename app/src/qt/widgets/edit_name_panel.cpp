@@ -34,6 +34,11 @@ EditNamePanel::EditNamePanel(MfWidgetMode mode, QWidget* parent)
     layout->addWidget(label);
     layout->addWidget(lineEdit);
     setLayout(layout);
+
+    QObject::connect(
+        lineEdit, SIGNAL(textChanged(const QString&)),
+        this, SLOT(lineEditTextChanged(const QString&))
+    );
 }
 
 EditNamePanel::~EditNamePanel()
