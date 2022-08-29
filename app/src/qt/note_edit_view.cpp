@@ -81,6 +81,10 @@ NoteEditView::NoteEditView(QWidget* parent)
         noteEditor, SIGNAL(textChanged()),
         this, SLOT(slotEditorTextChanged())
     );
+    QObject::connect(
+        topNamePanel, SIGNAL(textChanged()),
+        this, SLOT(slotEditorTextChanged())
+    );
 }
 
 NoteEditView::~NoteEditView()

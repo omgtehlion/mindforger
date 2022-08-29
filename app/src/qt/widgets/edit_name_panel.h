@@ -68,6 +68,12 @@ public:
 public:
     void focusName() { lineEdit->setFocus(); }
     QString getName() const { return lineEdit->text(); }
+
+signals:
+    void textChanged();
+
+private slots:
+    void lineEditTextChanged(const QString&) { emit textChanged(); }
 };
 
 }
